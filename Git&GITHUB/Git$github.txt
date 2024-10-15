@@ -1,0 +1,53 @@
+A Talk on git -----> Git is a software and Github is service. Both are very deifferent.
+other services like github -----> bigbucket, etc
+role of git ------> It saves checkpoint of the that we save and are sure it works perfectly. so that we can come back to that savepoint when something goes wrong in future with the program
+
+
+
+Version control system -----> Track files for changes
+
+
+Learing path ---> 
+-> get the basics
+-> use it daily
+-> face the problems -> solve the problems
+
+
+Repo ------ (repository) i.e a folder which contains a lot of software files in it.
+-> git on system vs tracking(repo)
+there is difference between a normal folder vs a folder that is being tracked by git.
+
+
+the first command I am learning is  "git --version". This command when run in command line will tell us the version of the git installed.
+
+I have to manually tell git about the folder I want it to track. Every folder tracked by git can be totally independent.
+
+
+Example ->  Here, I want to track gitone and gittwo , but not gitthree.
+
+first and foremost I can always check the status of the git, by using the command "git status"
+
+so, lets go into gitone folder:
+
+cd gitone -> ls -la(to see all folders including hidden ones) -> git status (to check, and also it's a good practice to check) -> git init (to initialize the git software)
+
+
+note: 
+1. git init is run one time per project.
+2. after git initialized, a gidden folder will appear inside the "gitone" folder, called ".git".
+3. ".git" is a hidden folder to keep history of all files and sub folders
+4. cd .git -> ls (just to see what's inside it. The folder will grow automatically when we start adding into 'gitone' folder).
+5. We never erver make change inside ".git" folder manually. Never ever.
+
+
+Commit -> statements that can be considered like checkpoints (just like a video game) of a program.
+We write something in a directory, then we add that and we commit that.
+There are couple of commands before we actually do the commit.
+
+
+Basic idea  ------
+
+I will have a working derectory(it means git is initialized int it already) --> then use the command "git add `filename`" --> Then everything is brought to the "staging area" (it means it's not yet committed but instead ready to commit some files)  --> git commit (to actually commit. i.e make a checkpoint) --> after the commit the repo is on the "checking stage" --> git push --> into the github (I am using it, there are other services as well).
+
+
+

@@ -1,0 +1,18 @@
+pwd --> This command shows the "Present Working Directory".
+
+always run git status first. If git is initialize, I will always and always be on some branch. It may be master branch or other branch main, checkout etc.
+ I have a plugin called "git lens" for commit graphs
+
+ Now, 
+ 1. I made two file inside "gitone" folder named testonw.txt and testtwo.txt. So, for now ,from the flow of git written in "Git&github.txt" file, it is still in "working stage".
+ 2. Next step was "git add". So, let's say I want to track testone and not testtwo because testtwo is not ready to be tracked (according to me let's say)
+ 3. git add testone.txt
+ 4. run "git status" to see the status, which will be testone.txt in "staging area". "staging area" is a initermediate stage before any commit. It's like a video game asking "do you really want to save your changes?". I can stage and unstage the files as well.
+
+ 5. next step was "git commit -m `message`". commit always needs a message on why this is the zone, or why commiting this file, or what this file does. Here, I choose "Add file one" message.
+
+6. We are now in the repo stage
+
+
+// Now , i'll be doing the same thing but with the testtwo.txt file.
+
