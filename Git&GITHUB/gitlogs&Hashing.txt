@@ -1,0 +1,17 @@
+Atomic commits  -----> The following is way for writing the commits as per industry standards 
+
+1. kepp commits centric to one feature , one component or one fix. Focused on one thing.
+2. Present or PAST commit message:
+    * Depends {present tense, imperative}
+    * give order to code base
+    * don't care
+
+note: git config --global(changes default editor to vscode)   core.editor  "code --wait".
+
+to set the name and email in the graph shown in the git graph extention   follow this   --->
+
+1. git config --global user.name "firstname Lastname"
+2. git config --global user.email "something@gmail.com"
+
+
+// git log --oneline --> It gives me the logs of git in just one line.
