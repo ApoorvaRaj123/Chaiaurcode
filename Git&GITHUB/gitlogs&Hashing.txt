@@ -15,3 +15,28 @@ to set the name and email in the graph shown in the git graph extention   follow
 
 
 // git log --oneline --> It gives me the logs of git in just one line.
+
+----- GitIgnore file -----
+
+Whenever I will be building a big project, I will be having a file for "environment variables" which holds sensitive information like API keys, AWS keys
+, open api keys etc. They should not be leaked or it would be a disaster.
+Inside this file simply write the filename that you wnat to ignore completely when you add the files for commiting. for example: ".env" file.
+
+so when I upload all the files using "git add.", it will ignore ".env" file completely. I can put "node_modules/" too.
+Now, to chech, run "git status" and I found that it's not keeping the track of ".env".
+
+NOTE: to make it easy for what I should write inside the .gitignore file when there will be around thousands of files, I can simply google "gitignore generator" . It was give me a pregenerated file fopr it.
+
+---------------------------------------------------------------
+
+To know where the name and email which I gave through the "git config" command is stored.
+simply go to root directory ( denoted by ~), -----> by doing cd or cd ~ -----> cat .gitconfig command to see how it's stored my name and email.
+
+
+
+
+--------------------------  Commit behind the scenes --------------------------------
+
+In the world of the git, every commit is dependent on the previous commit except for the first commit.
+we have three values in one commit. We have a hash , a parent and the information.  The parent of every next commit points to the hash of previous commit. 
+This is mechanism that helps us to go back to the saved information of previous commit.
