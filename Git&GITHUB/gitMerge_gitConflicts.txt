@@ -1,0 +1,63 @@
+Now I am inside "gittwo" folder.
+
+I created few files : index.html
+So, I did all the procedures up to making a commit "add index file"
+
+Now, A new command "git branch" -----> it gives me "* master", "*" means it's pointing towards a branch, her it's master branch.
+
+
+BRANCHES ------------
+
+It's like an alternate timeline. We are always on some branch. A master branch is created by default by git. Each node in the branch dennotes the 
+commits I made. It's a straightforward branch.
+
+
+But how to create a side branch? 
+
+Inside index file that I created, I actually created it's boiler plate and wrote a basic heading page/anything.
+Now, when I go and check it's status, git will tell me there's a file that has been modified but I haven't made any checkpoint for it.
+
+Now, checking which branch I am on with "git branch" command.
+To create another branch use command "git branch <branch name>". branch name can be decided by company whatever they wanna name it.
+example : A coder is working on the navbar, I will create a branch like this : "git branch nav-bar"
+
+how to move onto a different branch? The easiest way to do this is use command "git checkout nav-bar". Now i will be on nav-bar branch instead of master.
+
+If i check right now where the reference is, the master and nav-bar branch will show the same because I haven't made any changes after making it.
+So, I will make a new file "nav-bar.html" inside the gittwo directory, which is being tracked by the git and make some navbar just to make a few
+changes.
+
+now, got status will show that I haven't added the modified file -----> after that I will add it and then commit it. Then I opened the git graph extension
+and saw navbar and master branch are now seperated by line
+
+BUt when I switch back to master branch I notice that the nav-bar.html that I made was completely gone. Because I didn't make that file in that branch.
+So any coder whho is working on the navbar will be completely independent from what I will do in the main branch.
+
+
+some commands :
+
+git branch
+git branch bugfix
+git switch ----> does same thing as git checkout
+git switch bugfix
+git log
+git switch master
+git switch -c <Branch Name> (create a branch and move there)
+git checkout -b <Branch Name> (create a branch and move there)
+
+
+commit before switching to another branch
+go to ".git" folder and checkout HEAD folder
+
+
+
+
+-------------------------- Merging the Branches --------------------------------
+
+At some point in coder I will want to merge the codes in different branches. It is recommended to be on the brach that you want other branch into. It's a good practice
+
+git branch (I am on nav-bar currently, but I want it to merge onto master branch, so I will be switching to master branch) --> git checkout master --
+--> git merge <branch name> i.e git merge nav-bar (It will be asking to write a commit so I will wi=rite this "Merge branch nav-bar") --> git branch -d nav-bar (to delete nav-bar branch)
+
+
+What are conflict zones?
