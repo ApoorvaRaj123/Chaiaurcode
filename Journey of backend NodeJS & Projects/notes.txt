@@ -1,0 +1,12 @@
+What are severs? Server is a software which serves you , it's not those big hardwares , they are data centers. Server is installed inside them.
+
+The idea is that frontend sends a request to the server from a specific port and the server sends the response from that exact same port back to the browser.
+That's the whole goal.
+
+How do we do that? Most of the time I will have to ahead and create an API or also known as Application Programming Interface.
+
+This is what we create in the server so that any applpication that comes up can consume the APIs.
+Until now I only knew how to consume the APIs.
+But In the server we will create APIs so that any request/different types of request that comes up, I can send the data based on the request type.
+
+I can process their data, store the data in the database and maybe read some data from the database. 
