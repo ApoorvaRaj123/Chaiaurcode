@@ -1,0 +1,26 @@
+Git Diff -----> (informative command)
+It compare working with staging. It shows the differences, but not between the file a and file b. It instead shows the differences between
+the files a and a .i.e same file. The only difference is it shows me version of the file in some x time and some y time.
+
+What I understood from this is, it meant that let's say I am working on file "a" and I have "staged" some changes. Now I want to compare the file 
+when things were not staged vs when they are staged.
+Maybe the comparison is "how does this exact same file looked like when I committed it/ two commits before" OR
+Maybe the comparison is "how does this exact same file looked like in this branch vs in other branch"
+
+
+How to read diff? It talks using some symbols which has some meanings like:
+* let's say "a" is the name given to the file 1 and "b" is the name of the same file but after some time (i.e some changes as mentioned above)
+
+1. ----- So in the diff, "---" is the symbol for "a", and "+++" is the symbol for "b"
+2. change in lines and a little preview of it.
+
+
+-------------------------------- Git Stash --------------------------------
+
+Git stash is a sub tool in the git itself.
+
+-> create a repo, work and commit on main
+-> switch to another branch and work
+-> conflicting changes do not allow to change the branch, without commiting
+
+
