@@ -1,0 +1,20 @@
+
+
+First I'll be making some webpages ( very simplistic ) -----> index.html, about.html and contact.html
+
+Now, I created a new filfe named "server.js" in which I will be wrting my server.
+
+I used three modules for it. "http" , "fs" and "path"
+
+http, for actually creating the server itself. It is a very big module in node that comes with a lot of functionalities and making a server is one of them.
+
+fs, for handling the files and,
+
+path, to get the file path.
+
+
+
+For listening the requests from the browser that server can react upon after listening, there is no functionalities for it in the Java Script.
+
+The truly responsible for it is "LibUV". Is is for binding all that request and giving me an object of request, so I can do whatever with that.
+
