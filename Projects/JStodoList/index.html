@@ -9,21 +9,21 @@
   <body>
     <div class="main">
       <h1>Todo list</h1>
-      <div class="taskBox">
-        <input type="text" placeholder="Add a new task here..." />
-        <input type="button" placeholder="Add task" value="Add task" />
-        <div class="tasks">
-          <ul>
-            <li>
-              <input type="text" placeholder="new task will come here..." />
-              <input
-                type="button"
-                placeholder="remove task"
-                value="remove task"
-              />
-            </li>
-          </ul>
-        </div>
+      <div class="inputTaskBox">
+        <input
+          class="inputAdd"
+          type="text"
+          placeholder="Add a new task here..."
+        />
+        <button class="inputBtn">Add task</button>
+      </div>
+      <div class="tasks">
+        <ul>
+          <li>
+            Text
+            <button class="btn">remove</button>
+          </li>
+        </ul>
       </div>
     </div>
     <script src="index.js"></script>
