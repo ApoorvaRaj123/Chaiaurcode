@@ -1,0 +1,23 @@
+CRUD -> Create, Read, Update, Delete an entry.
+
+types of DB -> SQL and NO-SQL and others like graph DB, vector DB    NO-SQL(not only SQL)
+
+
+For it, the knowledge of backend is necessary. The whole job of backend is to process the data, then after processing the data,
+talk to Databse (i.e add things to DB or get things from it and show it to the user etc).
+
+The type of NO-SQL DB I studied is mongoDB. As SQl DB requires me to have basics of sql knowledge, and then I can use something like postgres,
+MYSQL, but all of them requires some level of knowledge of SQL
+
+But, in MongoDB, everything is an object. since, I am a Javascript developer , I feel very comfortable with it.
+
+ex - {
+    name: "goku"
+}
+
+and then we have ORMs. So what actually happens in the real world is let's just say if this is my MongoDB, I don't interact with it directly.
+There is usually a layer between the backend and the database. So, backend talks to this layer, then that layer talks to the database. This layer is
+called ORM (object relational manager. example ---> mongoose, Prisma, Drizzle)
+
+I will be learining mongoose. It's job is to make talking to database very easy
+

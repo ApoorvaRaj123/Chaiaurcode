@@ -1,0 +1,11 @@
+SQL - structured query language.
+It is not as complex as the regular programming language but it's domain specific, which means it is used to talk to the Data base.
+It is specifically designed to use for modifying the Databse or schema or creating it. 
+
+Schema means structure for structured Database
+
+what is structured data?
+Just like excel sheets there is a structure in it. I know exactly where , what will be going.
+
+Relational database : RDBMS store data data within rows and columns which are used to form tables. A relation between the two table
+can be formed using FOREIGN KEY. These keys are unique identifiers
