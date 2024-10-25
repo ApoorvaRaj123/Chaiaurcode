@@ -9,3 +9,14 @@ Just like excel sheets there is a structure in it. I know exactly where , what w
 
 Relational database : RDBMS store data data within rows and columns which are used to form tables. A relation between the two table
 can be formed using FOREIGN KEY. These keys are unique identifiers
+
+
+what is unstructured Data? -> It is a data which doesn't have any predefined model for it. data such as social media posts are unstructured and can be
+updated and changed rapidly, while structured data like bank transactions have a much lower rate of change.
+ex => pictures, audio files, maps and videos.
+
+
+
+What is NOSQL - not only syructured query language is a database management system used to ingest, store and retrieve unstructured data and semi-structured
+data within a database.The reason they are called nosql is to emphasize the fact that these databases can handle non-tabular, non-relational data in
+their original form  
