@@ -18,7 +18,7 @@ body{
 
 .main{
     background-color: rgb(31, 29, 29);
-    height: 50vh;
+    min-height: 50vh;
     width: 40vh;
     padding: 1vw;
     /* display: flex;
@@ -56,7 +56,9 @@ body{
 }
 
 ul li{
+    position: relative;
     width: 100%;
+    margin-top: 0.3vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -67,11 +69,18 @@ ul li{
     color: #fff;
 }
 
-.btn{
+ul li button{
     width: 25%;
     background-color: rgb(255, 106, 0);
     color: #fff;
     padding: 0.7vw;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+
+.completed{
+    background-color: rgb(57, 56, 56);
+    text-decoration: line-through;
 }
