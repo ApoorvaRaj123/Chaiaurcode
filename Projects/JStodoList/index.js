@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
       tasks.push(obj);
 
       save();
-
+      location.reload();
       newTask.value = "";
     }
     // const task = e.target
@@ -38,9 +38,19 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
 
     li.addEventListener("click", (e) =>{
+      if (e.target.tagName === "BUTTON") return; 
       task.completed = !task.completed;
+      li.classList.toggle("completed");
       save();
     });
+
+    li.querySelector("button").addEventListener("click", (e) =>{
+      e.stopPropagation();
+      tasks = tasks.filter((t) => t.id !== task.id);
+      li.remove();
+      save();
+      console.log(e)
+    })
 
     list.appendChild(li)
   }
