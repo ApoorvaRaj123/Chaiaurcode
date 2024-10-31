@@ -1,0 +1,13 @@
+I have a node environment that will help me to write JS in backend environment.
+Along with node, I have expressJS as well, which is a library that makes writing the routes very very easier.
+I can also write authorization logic, authentication logic and business logic, is data valid?, should I send response back?, etc.
+
+Now, another key component for making the backend is database. In the world of JS, generally mongoDB (database) is not touched
+directly. Although I can.
+That's why a library is used known as Mongoose. It interacts with mongoDB so that I won't have to write the core code of the mongoDB.
+There is also multiple connections to the database, I want to handle the connection Pooling, sending the data, getting the data back, etc.
+There is so much infrastructure to work with, and mongoose helps with that.
+Mongoose is a kind of ORM (object relation mapper). 
+To keep my data structure into a sum structure and then to talk to the database, I need something in between as a middleman which is going 
+to be mongoose.
+Other's like mongoose -----> Prisma, drizzle
