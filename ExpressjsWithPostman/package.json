@@ -1,0 +1,12 @@
+{
+  "name": "expstart",
+  "version": "1.0.0",
+  "description": "start of express",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "V",
+  "license": "ISC"
+}
