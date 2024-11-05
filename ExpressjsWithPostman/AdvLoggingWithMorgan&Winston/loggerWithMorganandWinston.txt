@@ -1,0 +1,48 @@
+When I hit the POST route of "teas" after giving some data to that route through postman, I can get that data but after only after deconstructing
+the exact names of the data keys from the req.body , and if I console.log("POST") I will only get POST written in the console.
+It means that I am actually hitting that particular route. But that's it. If I am building a more complex application, then I will be 
+needing much more information like : What requesting is coming? , what endpoint is getting hit? , do I need to log them into some log file I want to send,
+what's the time that I have taken to send the request so that maybe I can optimize my request etc. 
+
+If I am not measuring I can't optimize.
+
+Now, I wnat to install some advance loggers, which are winston and morgan like : npm i winston morgan
+
+next step is to create a new file. These files usually can rely on utilities as well. The best place is to keep it into utilities but right now I will be
+keeping it outside as logger.js
+
+
+
+Now, from the chai code website, I opened the documentation for advance logger and took the configuration code from it it and pasted it on logger.js
+
+So, Node loggers are a powerful tool that are useful for logging the messages to the console, file or any other destinations. It provides a flexible API
+for logging the messages, making it easy to debug and monitor application compared to the standard console log method.
+
+Inside logger.js, after pasting the configuration code, I can see that winston provides a destructured methods for creating custom loggers by "createLogger"
+, with "format" it helps me to modify the way I want to see my data, i.e format. "trasnpoprt" is similar to transportation as in I am sending the data 
+from one endpoint to another endpoint like to console, or a file etc. I can observe any choke point occuring in the App or API information.
+
+
+The fist step I used is formatting the data using the format.combine(), inside that , I gave it colours, and formatted the data in a way tat printing
+it would give me level, messages (what message is coming up) and tinmestamp (at what time is it happening).
+
+
+
+Next step is to actually create a winston logger.
+I can see that in the code inside logger.js
+Inside the createLogger, I saw transports:[] , here, I defined how I want my data to be transported. Maybe I want to console log it, or maybe put it into
+file, or maybe I want to connect the database
+
+Here, transports.console({}) part is for overwriting the console with the defined format.
+and transports.file({filename: "app.log"}) part is for storing the persisting information. Here ".log" extension of the app.log file important
+as many systems and softwares can understand it directly.
+Now , export the logger.
+
+
+Now, the logger is configured the way I wanted. So, it's time for the USAGE of it.
+
+again from the docs, copy the imports of logger and morgan, and paste it into the file index.js
+after that, I want to give the morgan format, meaning, how I want the information to come to my console. again, paste it into the file index.js
+The format I gave is that I want to have the method, I want to have url, I want to have the "status" and the response time in ms.
+
+Now, I used the morgan middleware to configure and manipulate the information that comes up here.
