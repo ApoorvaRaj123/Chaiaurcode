@@ -1,0 +1,24 @@
+1. The very first steps to create a new project is to initialize it using "npm init"
+
+2. after that, I installed two dev dependencies : nodemon and prettier. Nodemon for restarting the servers and prettier for linting the code
+in a proper way. (This is useful in professional environments)
+
+3.In package.json, I defined the "type": "module" so that I can use modern JS import syntax. I prefer it that way.
+
+4. I made two files named : .prettierrc, which is a RC type file and .prettierignore where I wrote the folders and file names for the prettier to
+ignore them completely.
+
+5. I made a "src" directory and in that I made these folders : controllers, db, routes, middlewares, models and utils. This way of seperating the 
+folders concerning different purposes is called "seperation of concerns" and this folder structure is called "Model View Controller" or MVC structure.
+
+6. Inside the same "src" directory, I made these files as well : .env, index.js, app.js, constants.js and readme.md .
+
+7. Inside "src/db" I made a file named index.js whose only purpose is to make a connection with database. 
+
+8. I went inside the "src/models" folder and made these files : comment.models.js, like.models.js, playlists.models.js, subscription.models.js,
+tweet.models.js, user.models.js, video.models.js.
+This folder only contains the files that are just mongoose syntax of data modelling that I did on eraser. It contains files of each entity in that DB design.
+Also, in each file name, the ".models" has no special effect at all. It's just a naming convention for the models which I can choose not to do. That's all.
+
+9. I will be creating similar files inside rhe "controllers" folder as well, as each model will be having it's own Controller as well.
+But before this, I installed express and mongoose through npm
