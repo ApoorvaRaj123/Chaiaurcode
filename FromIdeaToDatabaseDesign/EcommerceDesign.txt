@@ -1,0 +1,76 @@
+This Database design will include :
+
+users
+Categories (of products)
+products 
+OrderList (of products)
+Orders (of products)
+Cart (of diff. categories products)
+
+INSIDE Eraser Tool -----
+
+for users ------->
+
+users [icon:user] {
+  _id string pk
+  username string
+  email string
+  password string
+  address string
+}
+
+
+for products ------->
+
+
+products [icon:crate] {
+    _id string pk
+    name string
+    descriptions string
+    price number
+    productImage string       -------------------------> (Because the usual way of storing the image is through the third party like AWS or Cloudinary etc) 
+    availableNumber number
+    wishlist boolean
+    category ObjectId categories
+    orderedBy ObjectId users
+    orderedAt Date
+    updatedAt Date
+}
+
+
+categories [icon: table] {
+  _id string pk
+  name string
+  createdAt Date
+  updatedAt Date
+}
+
+
+orderItems [icon: list] {
+  _id string pk
+  productId ObjectId products
+  quantity number
+}
+
+order [icon: list] {
+  _id string pk
+  customer ObjectId users
+  orderItems ObjectId[] orderItems
+  address enum "default, new"
+  status enum "PENDING, DELIVERED, CANCELLED"
+  paymentId string
+  createdAt Date
+  updatedAt Date
+}
+
+
+cart [icon: list] {
+    products ObjectId[] products
+}
+
+products.category - categories._id
+products.owner - users._id
+orderItems.productId - products._id
+order.customer - users._id
+order.orderItems < orderItems._id
+cart.products < products._id

@@ -1,0 +1,65 @@
+I am using the Eraser application on browser to design the DB's.
+
+First thing I am designing is the TODO application Database.
+
+In the entity relation diagram the first entity I am going to have is "todos" itself.
+
+other entity will be users and subtodos
+
+
+for todos ------> 
+
+
+todos {
+    _id string pk    -----------> (pk = primary key)
+    content string
+    complete boolean
+    subtodos ObjectId[] subtodos  -------> (here objectId is an array of ID's and it is referenced to subtodos)
+    createdBy objectId users
+    createdAt Date
+    updatedAt Date
+}
+
+for users ------>
+
+
+users {
+    _id string pk
+    username string
+    email string
+    password string
+}
+
+
+
+for subtodos ------>
+
+
+subtodos {
+    _id string pk
+    content string
+    complete boolean
+    createdBy objectId users
+    createdAt Date
+    updatedAt Date
+}
+
+
+
+
+
+Now, I am going to map the relations between these entities.
+
+So, I'll be having todos, and inside each todos I will be having subtodos (as defined in the schema above).
+
+( i ). So, this subtodos inside the todos will be ahving a one to many relationship with the subtodos's id (Defined inside the subtodos schema above)
+
+"<" is the symbol of "one to many" relationship in eraser application.
+The overall meaning here is : The todos is one but inside each todo there are going to be many subtasks (subtodos). And each subtodos are referenced
+through their id's.
+
+In eraser application : todos.subtodos < subtodos._id
+
+
+( ii ). do the same thing with createdBy inside todos schema and map it "one to one" with users's id
+( iii ). do the same thing with createdBy inside subtodos schema and map it "one to one" with users's id
