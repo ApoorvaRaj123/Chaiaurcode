@@ -1,0 +1,43 @@
+This is the standard practice used in most of the professional codes in the industry. 
+
+Here, I will be sharing my own learning of the helper utilities that will help us and
+
+make the errors standardized and response standardized, which will save our time in the later stages 
+
+of building a big application.
+
+I started by making an asynchronous handler or async handler. It is being used by different names in different places.
+
+But the basic idea is that I will be writing many GET requests as well as the POST requests and so, the chances are that some 
+
+requests might fail. And, I learned that in that case of any potential failure cases, I need to wrap them in a try/catch block
+
+so that I can handle the error. But, here is the thing, just listening that I have to write try/catch for every single
+
+controller is tedious. Also , some of these requests might be asynchronous, so handling will involve some extra steps as well.
+
+So, the standard practice is that I will wrap all of the requests in a asynchronous handler inside a promise so that I can 
+handle the errors a little bit more cleanly.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+Now, I went inside utils/asyncHandler.js, where I wrote a function named "asyncHandler". It is goin to be a higher order function of JavaScript
+which is going to accept another function. I will name the accepted function as "requestHandler". The requestHandler function will give me there
+parameters which are : req,res,next. There is fourth one as well as which is "error", but I did not use it.
+The idea is that any function with a request is being wrapped by this handler where the said function is executed in a promise.resolve 
+after I returned the the whole thing. 
+I first took the function as a parameter, then returned a function which accepted the parameters I got from the request handler immedietely,
+and put the requestHandler(req,res,next) in a promise.resolve block , then catch the error as well. 
+So, Now I don't need to write any try/catch or promises for any controller/requests as I can simply use this blue print of a function or a 
+handler that I created. 
+
+
+
+------------------------------- standardized use of next() middleware --------------------------------
+
+
+It is compulsory that I will be sending some response to the user on the front-end. So, I want to make my response standardized so there is no mistake
+such as forgetting the status code, message etc.
+I will make a file inside utils folder named "ApiResponse.js".
+Inside it, I will create a class, as error response and API response are always in the class format.
