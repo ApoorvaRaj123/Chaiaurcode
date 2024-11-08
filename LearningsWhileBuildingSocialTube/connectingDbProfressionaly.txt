@@ -1,0 +1,60 @@
+1.  I inported express in app.js then amde app = express(); and finally exported the app.
+
+2.  I imported the {app} in index.js and then app.listen on the port 7000;
+
+3.  I kept the PORT = 7000 on the ".env" file. But, download "dotenv" package before it, and then importing it on index.js tp substitute the "PORT"
+    with "process.env.PORT" to access the PORT variable in ".env" file.
+
+4.  In index.js file define dotenv.config({path: "./.env})  -----> This line is to tell the dotenv the location of the variable that I put inside the .env as 
+    sometimes the variables can be inside some folders as well.
+Note : Sometimes the nodemon is unable to pickup these environment variables so to tell it seperately, I need to tell it inside the package.jsopn file
+       where the "dev" script command is written. I wrote it like "nodemon -r dotenv/config src/index.js".
+
+5.  Now, moving on to app.js. One of the common things is WHO should be able to talk to the DB. That's known as CORS (cross origin resource sharing).
+    So, to configure this I need to install another package called "cors". 
+    import the cors from "cors" in app.js. Then, mention these "middlewares" only after the app is being designed.
+
+Middlewares : These are in between configrations so that I can do certain things in between. For example: A request comes to my server and my server
+should respond to that server. But, should my server respond to that request or maybe I don't that request to come to me, or 
+I want to manipulate that request maybe I want to access the cookies or inject some objects into it. So, basically I can do many things to that request
+before my server can respond to it. These are known as middlewares, and CORS is one such middleware.
+ALL the precoded middlewares are written like : app.use(). I can also write my own custom middlewares but I will learn them in the near future.
+
+6. Now, I will tell the "cors" middleware what should be allowed or not by giving it an object of options using app.use({})
+like: app.use({
+    cors({
+        origin: process.env.CORS_ORIGIN,   ------> here, CORS_ORIGIN is an env variable not yet defined. Here I will define what is allowed or not.
+        credentials: true 
+    })
+})
+
+
+for CORS_ORIGIN variable the value "*" means allow everyone, but that's obviously not a good practice. So, I wrote it like this:
+CORS_ORIGIN = http://localhost:3000 # add the frontend url to make it more secure than before.
+
+I can give this variable multiple values seperated by comma in an array. But I only allowed it to be accessed by the frontend url.
+
+
+7.  I now used some other middleware but from ecpress this time. They are express.json({limit:"16kb"})  -----> This allows the json data to come to my server
+    And I gave it the json data a limit of 16kb as a good practice.
+    Another one is express.urlencoded({extended:true, limit:"16kb"}) -----> This middleware allow the data to come in the url encoded format. This is a different format
+    like in my url bar when I hit "space" the server gets that as a value equal to "%20". I provided it a option as well, extended is a version of URL
+    encoded. It used to be a previous version and now it's modern version. So, extended:true means that all the latest properties are available.The 
+    limit here is "16kb" again.
+
+    Third middleware is express.static("public")    -----> It is used to allow the server to serve the assets like images, CSS even scripts ,etc.
+    public is the folder which will keep all my assets inside it.
+
+
+
+8.  NOW, to actually connect to the Database I need Mongoose which I already installed.
+    now, I went to mongoDB atlas which is a service, there inside the database access, I created a new user that can access the database.
+    then, in my coding editor, inside constants.js, I gave and exported the database name from here, like: export const DB_NAME = "socailtube"
+
+9.  Now, inside db/index.js to actually write the connection of the database.
+    remember few things for DB connection : (i). DB may not always be successful and always has a chance of failure.(use try/catch)
+    (ii). Expect that the database is always somewhere in the world far away from me. That means, the connections and any requests will take time.(use async/await)
+
+10. inside db/index.js, I imported mongoose and {DB_NAME} from constants.js then simply put the connect code inside a try/catch and used async/await
+    db connection. I used the mongoDB URL as a .env variable to use it for connect. I got the mongoDB URL from mongoDB atlas where I created it and 
+    the username from the data access option where I created a username to give it access to the database.
