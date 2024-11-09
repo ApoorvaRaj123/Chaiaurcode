@@ -1,0 +1,32 @@
+One of the key thing while building a production grade APIs is to make an endpoint which does the healthcheck.
+
+Now, it does nothing so special, it just gives back the response that every thing is running fine and you are able to reach at least one realiable
+endpoint.
+
+
+Since, it's a controller I will be writing it inside controller/healthcheck.controllers.js
+
+I imported ApiResponse (The one I made to standardize API response) and asyncHandler here.
+
+I made a variable named healthcheck and gave it asyncHandler which took a function as a parameter and taht function is returning res.status(200).json(new ApiResponse(200,"ok","Health check passed))
+
+
+Now, each controller will get it's own route or routeHandler so that I can organize things better.
+
+"The strategy is that each model will get it's controller and each controller will get it's routes."
+
+Inside the routes/healthcheck.routes.js, 
+
+Inside it I imported the "{Router}" from "express" and healthcheck.
+
+I gave a variable router value of router(). Then I mentioned where this router is going to serve. which is "/" route.
+This "/" is not the "home" slash instead it is the slash that depicts when the control is passed on to this controller.
+Then I mention what request is going to be (i.e get/prst etc).
+
+like: router.route("/").get(healthcheck). Then I default exported router
+
+In app.js, I imported the healthcheckRouter from "./routes/healthcheck.routes.js" and with the use of app.use() i wrote this:
+app.use("/api/v1/healthcheck", healthcheckRouter);
+
+Here the route I gave inside the app.use() will become the "/" route after the control is passed to the healthcheckRouter (where the healthcheck controller is defined).
+after the control is passed to the controller any further routes will be handled there. It forms a streamline flow in the code.
