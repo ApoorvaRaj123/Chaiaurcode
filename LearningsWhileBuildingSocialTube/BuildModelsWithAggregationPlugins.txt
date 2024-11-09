@@ -1,0 +1,33 @@
+I will be writing all the models of the application that I am building in this page.
+
+I will first be working on the user model.
+
+This is the needed fields for it that I decided : 
+
+{
+id string pk
+username string
+fullname string
+email string
+avatar string
+coverImage string
+watchHistory ObjectId[] videos
+password string
+refreshToken string
+createdAt Date
+updatedAt Date
+}
+
+
+Now, My first step will always going to be importing the mongoose, and { Schema } (yes,I destructured it) from "mongoose".
+
+now in new Schema, which is a method, I will write different objects like numbers. But before actually writing the schema, I will export it as a document 
+like : 
+export const User = mongoose.model("User", userSchema); -----> This line means that I am telling mongoose to go create a document named "User" inside my database
+and this model will be using the schema (structure) based on "userSchema".
+I am exporting this with the name of User for the case of needing this to import somewhere. I will not only get the model but I will also get the features
+that come with it like querying the database, finding a user, saving a new element in the DB
+
+
+Now, I will define my userschema. Also, I won't need to add the id myself because MongoDB automatically adds it and handles the primary key part as well.
+
