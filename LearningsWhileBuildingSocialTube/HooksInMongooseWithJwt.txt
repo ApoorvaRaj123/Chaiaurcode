@@ -1,0 +1,16 @@
+Mongoose have some hooks.
+These are middlewares which runs before someting happens.
+
+They are useful for writing the plugins. 
+
+Mongoose provide me with prehooks and posthooks.
+
+prehooks for any operation just before saving into the database and posthooks for any operation just after saving into the database.
+
+Now, generally I write the functionality in the controllers folder but somw functionality are so attached to some models that seperating these 
+functionality in different folders from models.
+
+One such case is what I am going to write in user model. So, for the user the one thing that I will do every single time before storing the USER 
+is that I will encrypt the password given by the user to secure the password.
+
+To encrypt the password I can use the "encrypt" module in built in NODE or I can use "bcrypt" package
