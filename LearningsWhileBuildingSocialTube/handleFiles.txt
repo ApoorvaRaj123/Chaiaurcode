@@ -1,0 +1,33 @@
+I took the cloudinary as my service provider to let me store my files in cloud. I took it's free plan.
+
+I now installed "cookie-parser" package. 
+So far, the "req" comes to me with many methods, and afer I imported the cookieParser, I can now have another method in "req" which is ".cookies"
+like : req.cookies
+
+Also, I don't have any options to handle the images. For this I will have a package called "multer". like : npm i multer.
+
+I get many options from multer from it's docs. The own I will use are "upload" and for "disk storage".
+
+Since, it's used as a middleware therefore I will go to the folder "src/middlewares". Here, I will create a file named "multer.middlewares.js"
+
+import the multer.
+Now, my first step is to allow the "disk storage" using multer.diskstorage({}).
+Here I will five methods like "destination" which has a function and that takes a request, a file and a callback(cb). The cb takes a value and where
+I want to store it. For me it's "./public/temp"
+
+The second option/method will be "filename" which will have a function as well and the role of "filename" is to change the filename, which is preffered
+in industry.
+
+I exported this in a const "upload". I will need it when I will wrtie my first "user controller" where I will ask the user to register.
+
+Now, the next step is to upload ot to the cloudinary. I first saved it in the server and then I upload it to the cloudinary from my server.
+
+cloudinary upload in not a middleware but a utility. So, I will go inside "src/utils" and create a file called "cloudinary.js"
+
+After logging in, I will keep it's api key and api secret inside environment variables.
+
+I wrote a cloudinary.config({}), then made a function called "uploadOnCloudinary" which takes a value that is localfilePath. This path is basically the
+location where the file that is to be uploaded is located. I get this value from the multer function where the return value is the path location. i.e
+wherever the file is uploaded in the server storage.
+
+On error handling part of this, I want to remove the file from the server storage as well if the error occurred. For that, I need a "fs" package.
