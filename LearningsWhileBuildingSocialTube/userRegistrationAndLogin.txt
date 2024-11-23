@@ -1,0 +1,13 @@
+Here I will Learn to register the user and handle the cases related to that.
+
+
+So, I recall that I made a healthcheck route by making a healthcheck controller then after designing it's functionsality I went 
+to the routes folder and made a healthcheck.routes.js file where I designed a simple router serving on the "/" route and handled by a "GET" method.
+and placed the healthcheck controller there that will be responsible for the request handling.
+
+Then I imported the healthcheckroute from routes file and simply gave app.use middleware with a path "/api/v1/healthcheck"and passed the 
+control over to the healthcheckroute.
+
+Now, I will create a new controller as every route and every model need it's own controller. It's a standard process.
+
+I will make a "user.controller.js" file
