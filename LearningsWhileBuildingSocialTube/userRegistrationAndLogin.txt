@@ -10,4 +10,25 @@ control over to the healthcheckroute.
 
 Now, I will create a new controller as every route and every model need it's own controller. It's a standard process.
 
-I will make a "user.controller.js" file
+I will make a "user.controller.js" file, and inside it, I will write a registerUser which will hold the value of asyncHandler(){after importing it}
+and give it the async function that will register the user.
+
+I will export it like : export { registerUser }, then I will go to routes and make a user.routes.js file where I will give this controller the control
+of the flow in the route "/register" in POST request.
+
+But there is one issue with this, it's that I will need the user to "upload" {the avatar and coverImage}. To do that, I will first import the {upload}
+that I already made in a seperate file previously. And then plce it as a middleware inside the POST just before passing control to the registerUser 
+controller.
+
+Now, normally the values of fields from the frontend comes to backend in "req.body", but the uploads from frontend comes in req.file
+
+For validation , I have so many options like using third party softwares like Zod etc.
+validation example : if(fullname?.trim()  === "") throw new error (checking if fullname is empty then throw certain error)
+
+The validation I am using is :
+
+if(
+    [fullname, username,email,password].some((field)=> field?.trim() === "")
+){
+    throw new ApiError(400,"All fields are required")
+}
