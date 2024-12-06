@@ -32,3 +32,89 @@ if(
 ){
     throw new ApiError(400,"All fields are required")
 }
+
+Next is to find whether this user already exist in DB or not? Therefore import User from the model file
+and since this is a model object, so we can use queries on the model. I will use mongoDB operator "OR" to findOne use based on username and email like:
+
+const existedUser = await User.findOne({
+    $or: [{username},{email}]   // mongodb operators are used by attaching a dollar sign before them. This is how to give more than field 
+                                //to base our search upon
+})
+if(existedUser){
+    throw new ApiError(409,"User with username or email already exist")
+}
+
+
+Now, I will handle the images. They will come in "req.files". This is given to me by "multer".  I will access req.files ooptionally and access the avatar.
+
+Multer also gives me the path from where the images are coming. So, I will store the whole thing in a variable like : 
+
+const avatarLocalPath = req.files?.avatar[0]?.path;
+if(!avatarLocalPath){
+    throw new ApiError(400,"Avatar is missing")
+}
+
+ //At this point , I can safely upload it to cloudinary(can use other services as well) like:
+
+const avatar = await uploadOnCloudinary(avatarLocalPath) // uploadOnCloudinary is to be imported first, from the file where it's defined.
+
+// Do it similarly for the coverImage as well in the same user.controllers.js file
+
+Now, I finally create the user like:
+
+const user = await User.create({
+    fullname,
+    avatar: avatar.url,
+    coverImage: coverImage?.url,
+    email,
+    password,
+    username: username.toLowerCase()
+})
+
+Now that I have interacted with the DB and created the user, I have to check whether the user is created. 
+So, since it's created in the mongoDB, It will have some additional properties, such as it's Id will be provided by the mongoDB itself in the "_id"
+
+So I will find a user using a query findById(user._id) because if I query like this then that means I am actually interacting with DB and getting the 
+createdUser back. So the chance of error is none.
+In this very query if I don't want some fields from the user, I can actually deselect using a "select" method whose syntax is given to me by mongoose.
+
+like: const createdUser = await User.findById(user._id).select("-password -refreshToken")
+
+If the user is not created (maybe data connection was lost , of DB is not responfing etc), I have to throw an error with status 500(server side problem)
+and a "something went wrong" message.
+Otherwise, if it's created, then send a response to the frontend like :
+
+return res
+.status(201)
+.json(new ApiResponse(200, createdUser,"User registered successfully"))
+
+
+After all this , I tried to run the application in node, but I got an error which was in the ApiError, as I was just throwing the error but 
+was not handling them. So, to handle the error I can either remove the ApiError.js file completely, but that won't do as I want to the control
+how the errors should come, Therefore I will other method which is to make a error.middlewares.js middleware, where I will define an errorHandler
+like below, and import it in the app.js where I will put this middleware at the very bottom just before exporting app.
+
+// In error.middlewares.js
+
+import mongoose from "mongoose"
+import {ApiError} from "../utils/ApiError.js"
+
+const errorHandler = (err,req,res,next) => {
+    let error = err
+
+
+    if(!(error instanceof ApiError)){
+        const statuscode = error.statuscode || error instanceof mongoose.Error ? 400 : 500
+
+        const message = error.message || "Something went wrong"
+        error = new ApiError(statuscode,message, error?.errors || [], err.stack)
+    }
+
+    const response = {
+        ...error,
+        message : error.message,
+        ...(process.env.NODE_ENV === "development" ? {stack : error.stack} : {}) 
+    }
+
+    return res.status(error.statusCode).json(response)
+}
