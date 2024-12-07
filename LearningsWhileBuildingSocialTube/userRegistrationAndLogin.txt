@@ -118,3 +118,10 @@ const errorHandler = (err,req,res,next) => {
 
     return res.status(error.statusCode).json(response)
 }
+
+
+After this step I went and did some debugging using the Postman as well as refractoring the code to make it more good. Like placing 
+
+the user creatino inside a try/catch
+
+I will next handle the LOGIN part for the user.
