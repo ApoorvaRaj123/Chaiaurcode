@@ -1,0 +1,32 @@
+This is the part for handling the Login of the user.
+
+
+When doing the login for the user I will also have the mechanism for grabbing the access tokens and refresh tokens.
+
+I know I alreadt have two methods : generateAccessToken and generateRefreshToken inside the user.models.js file. I defined them on user schema.
+This means that if I have access to any instance of the user created by the userschema. And when somehow I get the user through it's "id"
+I can grab the user, then I can freely use all the methods defined on the userSchema.
+
+While logging in the user I will generate these tokens 100%.
+So, after making a function that takes userID and creates the access and refresh Token in that for that user.
+Now, I can attach the refresh token to the user as I already created a refreshToken field in the userSchema.
+give it like : user.refreshToken(the field that is defined in the userSchema) = refreshToken(the on the I created in the function)
+then save the user like : await user.save({validateBeforeSave: false})
+now return both tokens.
+
+
+
+The strategy for logging the user is :
+1. get data from the req.body.
+2. do the check for the values I am expecting from the login form like email,password,username etc.
+3. find the user based on the username and email.
+4. check if the user is not obtained then throw the error "User not found"
+5. Now validate password by checking the password coming from the login form to the password already saved in the DB for the user.
+
+
+
+
+Now, I made a loginUser = asyncHandler(async (req, res) =>{
+    //I wrote all the logic for it here.
+
+})
